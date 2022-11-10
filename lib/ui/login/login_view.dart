@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/constants/extensions/app_padding_extension.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
 import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
+import 'package:flutter_ecommerce_app/widgets/textfield.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -134,40 +135,147 @@ class _buildFormContainer
               ),
               EmptyWidget()
                   .largeEmptyWidgetHeight,
-              TextField(
-                decoration: InputDecoration(
-                  focusColor: AppDefaultTheme()
-                      .themeData
-                      .scaffoldBackgroundColor,
-                  fillColor: AppDefaultTheme()
-                      .themeData
-                      .scaffoldBackgroundColor,
-                  hoverColor: AppDefaultTheme()
-                      .themeData
-                      .scaffoldBackgroundColor,
-                  prefixIcon:
-                      const Icon(Icons.mail),
-                  label: const Text('E-Mail'),
-                  labelStyle: TextStyle(
-                      color: AppDefaultTheme()
-                          .themeData
-                          .scaffoldBackgroundColor),
-                  prefixStyle: TextStyle(
-                      color: AppDefaultTheme()
-                          .themeData
-                          .scaffoldBackgroundColor),
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppDefaultTheme()
-                              .themeData
-                              .scaffoldBackgroundColor)),
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppDefaultTheme()
-                              .themeData
-                              .scaffoldBackgroundColor)),
+              AppTextField(
+                label: 'e_mail'.tr(),
+                icon: Icons.mail,
+              ),
+              EmptyWidget()
+                  .largeEmptyWidgetHeight,
+              AppTextField(
+                  isSecure: true,
+                  icon: Icons.visibility_off,
+                  label: 'password'.tr()),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment:
+                    MainAxisAlignment
+                        .spaceBetween,
+                children: [
+                  Expanded(
+                    child: Transform.scale(
+                      scale: 1.070,
+                      child: CheckboxListTile(
+                        contentPadding:
+                            const EdgeInsets.all(
+                                0),
+                        isThreeLine: false,
+                        activeColor: AppDefaultTheme()
+                            .themeData
+                            .scaffoldBackgroundColor,
+                        tileColor: AppDefaultTheme()
+                            .themeData
+                            .scaffoldBackgroundColor,
+
+                        title: Text(
+                            "remember_me".tr(),
+                            style:
+                                AppDefaultTheme()
+                                    .themeData
+                                    .textTheme
+                                    .bodyText2
+                                    ?.copyWith(
+                                        fontSize:
+                                            14.0)),
+                        value: true,
+                        onChanged: (newValue) {},
+                        controlAffinity:
+                            ListTileControlAffinity
+                                .leading, //  <-- leading Checkbox
+                      ),
+                    ),
+                  ),
+                  EmptyWidget().midEmptyWidget,
+                  Text(
+                    'forgot_password'.tr(),
+                    style: AppDefaultTheme()
+                        .themeData
+                        .textTheme
+                        .bodyText2
+                        ?.copyWith(
+                          decoration:
+                              TextDecoration
+                                  .underline,
+                        ),
+                  ),
+                ],
+              ),
+              EmptyWidget()
+                  .mediumEmptyWidgetHeight,
+              Container(
+                decoration: BoxDecoration(
+                    color: AppDefaultTheme()
+                        .themeData
+                        .scaffoldBackgroundColor),
+                height: 50,
+                width: MediaQuery.of(context)
+                    .size
+                    .width,
+                child: TextButton(
+                    onPressed: () {},
+                    child: Center(
+                      child: Text(
+                        'login_text'.tr(),
+                        style: AppDefaultTheme()
+                            .themeData
+                            .textTheme
+                            .bodyText2
+                            ?.copyWith(
+                                fontSize: 18.0,
+                                color:
+                                    Colors.white),
+                      ),
+                    )),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 10.0, right: 20.0),
+                    height: 50,
+                    child: Divider(
+                        color: AppDefaultTheme()
+                            .themeData
+                            .scaffoldBackgroundColor),
+                  )),
+                  Text('or'.tr()),
+                  Expanded(
+                      child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 10.0, right: 20.0),
+                    height: 50,
+                    child: Divider(
+                        color: AppDefaultTheme()
+                            .themeData
+                            .scaffoldBackgroundColor),
+                  )),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+                width: MediaQuery.of(context)
+                    .size
+                    .width,
+                child: Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment
+                          .spaceEvenly,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/icons/apple.png',
+                    ),
+                    Image.asset(
+                      'assets/icons/facebook.png',
+                    ),
+                    Image.asset(
+                      'assets/icons/twitter.png',
+                    ),
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ),

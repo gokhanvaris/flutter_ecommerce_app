@@ -2,5 +2,11 @@
     "welcome_text": "Hoşgeldiniz",
     "login_title": "E-Ticaret Uygulaması",
     "dont_have_account_text": "Hesabın yok mu?",
-    "sign_in": "Kayıt ol!"
+    "sign_in": "Kayıt ol!",
+    "e_mail": "E-Mail",
+    "password": "Şifre",
+    "forgot_password": "Şifremi unuttum?",
+    "login_text": "Giriş Yap",
+    "or": "YA DA",
+    "remember_me": "Beni Hatırla"
 }

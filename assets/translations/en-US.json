@@ -2,5 +2,11 @@
     "welcome_text": "Welcome",
     "login_title": "E-Commerce App",
     "dont_have_account_text": "Don't have an account?",
-    "sign_in": "Sign In"
+    "sign_in": "Sign In",
+    "e_mail": "E-Mail",
+    "password": "Password",
+    "forgot_password": "Forgot password?",
+    "login_text": "Login",
+    "or": "OR",
+    "remember_me": "Remember Me"
 }
