@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/constants/assets/image_constant.dart';
 import 'package:flutter_ecommerce_app/constants/extensions/app_padding_extension.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
 import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
@@ -272,13 +273,13 @@ class _buildFormContainer
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      'assets/icons/apple.png',
+                      ImageConstant.appleLogo,
                     ),
                     Image.asset(
-                      'assets/icons/facebook.png',
+                      ImageConstant.facebookLogo,
                     ),
                     Image.asset(
-                      'assets/icons/twitter.png',
+                      ImageConstant.twitterLogo,
                     ),
                   ],
                 ),
