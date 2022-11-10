@@ -6,8 +6,9 @@ import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
 import 'package:flutter_ecommerce_app/widgets/textfield.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +111,7 @@ class _buildFormContainer
               Row(
                 children: [
                   Text(
-                    'dont_have_account_text'.tr(),
+                    'have_an_account'.tr(),
                     style: AppDefaultTheme()
                         .themeData
                         .textTheme
@@ -120,10 +121,10 @@ class _buildFormContainer
                   GestureDetector(
                     onTap: () {
                       GoRouter.of(context)
-                          .go('/register');
+                          .go('/');
                     },
                     child: Text(
-                      'sign_in'.tr(),
+                      'sign_up'.tr(),
                       style: AppDefaultTheme()
                           .themeData
                           .textTheme
@@ -152,60 +153,12 @@ class _buildFormContainer
                   isSecure: true,
                   icon: Icons.visibility_off,
                   label: 'password'.tr()),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment:
-                    MainAxisAlignment
-                        .spaceBetween,
-                children: [
-                  Expanded(
-                    child: Transform.scale(
-                      scale: 1.070,
-                      child: CheckboxListTile(
-                        contentPadding:
-                            const EdgeInsets.all(
-                                0),
-                        isThreeLine: false,
-                        activeColor: AppDefaultTheme()
-                            .themeData
-                            .scaffoldBackgroundColor,
-                        tileColor: AppDefaultTheme()
-                            .themeData
-                            .scaffoldBackgroundColor,
-
-                        title: Text(
-                            "remember_me".tr(),
-                            style:
-                                AppDefaultTheme()
-                                    .themeData
-                                    .textTheme
-                                    .bodyText2
-                                    ?.copyWith(
-                                        fontSize:
-                                            14.0)),
-                        value: true,
-                        onChanged: (newValue) {},
-                        controlAffinity:
-                            ListTileControlAffinity
-                                .leading, //  <-- leading Checkbox
-                      ),
-                    ),
-                  ),
-                  EmptyWidget().midEmptyWidget,
-                  Text(
-                    'forgot_password'.tr(),
-                    style: AppDefaultTheme()
-                        .themeData
-                        .textTheme
-                        .bodyText2
-                        ?.copyWith(
-                          decoration:
-                              TextDecoration
-                                  .underline,
-                        ),
-                  ),
-                ],
-              ),
+              EmptyWidget()
+                  .largeEmptyWidgetHeight,
+              AppTextField(
+                  isSecure: true,
+                  icon: Icons.visibility_off,
+                  label: 'password'.tr()),
               EmptyWidget()
                   .mediumEmptyWidgetHeight,
               Container(
@@ -221,7 +174,7 @@ class _buildFormContainer
                     onPressed: () {},
                     child: Center(
                       child: Text(
-                        'login_text'.tr(),
+                        'sign_in'.tr(),
                         style: AppDefaultTheme()
                             .themeData
                             .textTheme
@@ -232,56 +185,6 @@ class _buildFormContainer
                                     Colors.white),
                       ),
                     )),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                      child: Container(
-                    margin: const EdgeInsets.only(
-                        left: 10.0, right: 20.0),
-                    height: 50,
-                    child: Divider(
-                        color: AppDefaultTheme()
-                            .themeData
-                            .scaffoldBackgroundColor),
-                  )),
-                  Text('or'.tr()),
-                  Expanded(
-                      child: Container(
-                    margin: const EdgeInsets.only(
-                        left: 10.0, right: 20.0),
-                    height: 50,
-                    child: Divider(
-                        color: AppDefaultTheme()
-                            .themeData
-                            .scaffoldBackgroundColor),
-                  )),
-                ],
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context)
-                    .size
-                    .width,
-                child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment
-                          .spaceEvenly,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      'assets/icons/apple.png',
-                    ),
-                    Image.asset(
-                      'assets/icons/facebook.png',
-                    ),
-                    Image.asset(
-                      'assets/icons/twitter.png',
-                    ),
-                  ],
-                ),
               ),
             ],
           ),
