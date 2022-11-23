@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppDefaultTheme {
   ThemeData themeData = ThemeData(
       appBarTheme: const AppBarTheme(
-        color: Colors.teal,
+        color: Color.fromRGBO(249, 249, 249, 1),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/app_router.dart';
+import 'package:flutter_ecommerce_app/bloc/bloc_providers.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
 
 Future<void> main() async {
@@ -15,7 +17,9 @@ Future<void> main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: const Locale('en', 'US'),
-      child: const MyApp()));
+      child: MultiBlocProvider(providers: [
+        ...BlocProviders.instance.providers,
+      ], child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
