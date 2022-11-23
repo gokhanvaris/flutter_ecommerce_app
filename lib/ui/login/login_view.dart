@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/bloc/auth/login/login_bloc.dart';
 import 'package:flutter_ecommerce_app/constants/assets/image_constant.dart';
+import 'package:flutter_ecommerce_app/constants/enums/router_enums.dart';
 import 'package:flutter_ecommerce_app/constants/extensions/app_padding_extension.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
 import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
@@ -12,15 +15,19 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: const [
-          _buildLoginHeader(),
-          _buildHeaderText(),
-          _buildFormContainer(),
-        ],
+    return BlocProvider(
+      create: (context) => LoginBloc(),
+      child: Scaffold(
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment:
+              MainAxisAlignment.end,
+          children: const [
+            _buildLoginHeader(),
+            _buildHeaderText(),
+            _buildFormContainer(),
+          ],
+        ),
       ),
     );
   }
@@ -66,8 +73,8 @@ class _buildLoginHeader extends StatelessWidget {
       child: SizedBox(
         height: 250,
         width: MediaQuery.of(context).size.width,
-        child: Image.asset(
-            'assets/images/logo_login.png'),
+        child:
+            Image.asset(ImageConstant.loginLogo),
       ),
     );
   }
@@ -120,8 +127,9 @@ class _buildFormContainer
                   EmptyWidget().lowEmptyWidget,
                   GestureDetector(
                     onTap: () {
-                      GoRouter.of(context)
-                          .go('/register');
+                      GoRouter.of(context).go(
+                          RouterEnums
+                              .REGISTER.value);
                     },
                     child: Text(
                       'sign_in'.tr(),
@@ -164,8 +172,8 @@ class _buildFormContainer
                       scale: 1.070,
                       child: CheckboxListTile(
                         contentPadding:
-                            const EdgeInsets.all(
-                                0),
+                            const AppPadding
+                                .custom(),
                         isThreeLine: false,
                         activeColor: AppDefaultTheme()
                             .themeData
@@ -173,7 +181,6 @@ class _buildFormContainer
                         tileColor: AppDefaultTheme()
                             .themeData
                             .scaffoldBackgroundColor,
-
                         title: Text(
                             "remember_me".tr(),
                             style:
@@ -219,7 +226,16 @@ class _buildFormContainer
                     .size
                     .width,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // GoRouter.of(context).go(
+                      //     RouterEnums
+                      //         .HOMEPAGE.value);
+
+                      context
+                          .read<LoginBloc>()
+                          .add(
+                              const LoginEvent());
+                    },
                     child: Center(
                       child: Text(
                         'login_text'.tr(),
@@ -238,8 +254,10 @@ class _buildFormContainer
                 children: [
                   Expanded(
                       child: Container(
-                    margin: const EdgeInsets.only(
-                        left: 10.0, right: 20.0),
+                    margin:
+                        const AppPadding.custom(
+                            left: 10.0,
+                            right: 20.0),
                     height: 50,
                     child: Divider(
                         color: AppDefaultTheme()
@@ -249,8 +267,10 @@ class _buildFormContainer
                   Text('or'.tr()),
                   Expanded(
                       child: Container(
-                    margin: const EdgeInsets.only(
-                        left: 10.0, right: 20.0),
+                    margin:
+                        const AppPadding.custom(
+                            left: 10.0,
+                            right: 20.0),
                     height: 50,
                     child: Divider(
                         color: AppDefaultTheme()
