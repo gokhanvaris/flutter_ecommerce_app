@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/app_router.dart';
 import 'package:flutter_ecommerce_app/bloc/bloc_providers.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
+import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +18,12 @@ Future<void> main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: const Locale('en', 'US'),
-      child: MultiBlocProvider(providers: [
-        ...BlocProviders.instance.providers,
-      ], child: const MyApp())));
+      child: MultiBlocProvider(
+          providers: [
+            ...BlocProviders.instance.providers,
+          ],
+          child: const GetMaterialApp(
+              home: MyApp()))));
 }
 
 class MyApp extends StatelessWidget {

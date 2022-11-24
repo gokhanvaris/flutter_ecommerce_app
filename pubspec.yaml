@@ -18,12 +18,13 @@ dependencies:
   #core  
   go_router: ^5.1.5
   easy_localization: ^3.0.1
+  simple_fontellico_progress_dialog: ^0.2.1
 
   #State 
   flutter_bloc: ^8.1.1
   get: ^4.6.5
   provider: ^6.0.4
-
+ 
   #Service
   dio: ^4.0.6
   http: ^0.13.5

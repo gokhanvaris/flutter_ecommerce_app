@@ -37,7 +37,7 @@ class _buildHeaderText extends StatelessWidget {
       padding:
           const AppPadding.custom(bottom: 20),
       child: Text(
-        'login_title'.tr(),
+        'login_title'.translate(),
         style: AppDefaultTheme()
             .themeData
             .textTheme
@@ -102,7 +102,7 @@ class _buildFormContainer
                 CrossAxisAlignment.start,
             children: [
               Text(
-                'welcome_text'.tr(),
+                'welcome_text'.translate(),
                 style: AppDefaultTheme()
                     .themeData
                     .textTheme
@@ -111,7 +111,7 @@ class _buildFormContainer
               Row(
                 children: [
                   Text(
-                    'have_an_account'.tr(),
+                    'have_an_account'.translate(),
                     style: AppDefaultTheme()
                         .themeData
                         .textTheme
@@ -124,7 +124,7 @@ class _buildFormContainer
                           .go('/');
                     },
                     child: Text(
-                      'sign_up'.tr(),
+                      'sign_up'.translate(),
                       style: AppDefaultTheme()
                           .themeData
                           .textTheme
@@ -144,7 +144,7 @@ class _buildFormContainer
               EmptyWidget()
                   .largeEmptyWidgetHeight,
               AppTextField(
-                label: 'e_mail'.tr(),
+                label: 'e_mail'.translate(),
                 icon: Icons.mail,
               ),
               EmptyWidget()
@@ -152,13 +152,13 @@ class _buildFormContainer
               AppTextField(
                   isSecure: true,
                   icon: Icons.visibility_off,
-                  label: 'password'.tr()),
+                  label: 'password'.translate()),
               EmptyWidget()
                   .largeEmptyWidgetHeight,
               AppTextField(
                   isSecure: true,
                   icon: Icons.visibility_off,
-                  label: 'password'.tr()),
+                  label: 'password'.translate()),
               EmptyWidget()
                   .mediumEmptyWidgetHeight,
               Container(
@@ -174,7 +174,7 @@ class _buildFormContainer
                     onPressed: () {},
                     child: Center(
                       child: Text(
-                        'sign_in'.tr(),
+                        'sign_in'.translate(),
                         style: AppDefaultTheme()
                             .themeData
                             .textTheme

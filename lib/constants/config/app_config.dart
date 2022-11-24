@@ -1,4 +1,4 @@
 class AppConfig {
   static const String baseUrl =
-      "https://fakestoreapi.com/auth/login";
+      "https://fakestoreapi.com/";
 }

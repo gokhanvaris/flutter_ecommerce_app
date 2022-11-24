@@ -17,17 +17,20 @@ class HttpManager {
       {this.tag, this.baseUrl, this.isAuth}) {
     _dio.options.baseUrl =
         baseUrl ?? AppConfig.baseUrl;
+    print(token);
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (RequestOptions options,
             RequestInterceptorHandler handler) {
+          // ignore: deprecated_member_use
           _dio.interceptors.requestLock.unlock();
+          // ignore: deprecated_member_use
           _dio.interceptors.responseLock.unlock();
           if (!isAuth!) {
             if (token != null) {
               options.headers["Authorization"] =
                   "Bearer $token";
-              options.headers["cookie"] = cookie;
+              // options.headers["cookie"] = cookie;
             }
           } else {}
 

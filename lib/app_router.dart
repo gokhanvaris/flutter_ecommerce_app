@@ -12,7 +12,7 @@ class AppRouter {
         path: RouterEnums.LOGIN.value,
         builder: (BuildContext context,
             GoRouterState state) {
-          return const LoginView();
+          return LoginView();
         },
       ),
       GoRoute(
