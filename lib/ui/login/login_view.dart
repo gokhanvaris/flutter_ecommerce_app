@@ -5,28 +5,44 @@ import 'package:flutter_ecommerce_app/bloc/auth/login/login_bloc.dart';
 import 'package:flutter_ecommerce_app/constants/assets/image_constant.dart';
 import 'package:flutter_ecommerce_app/constants/enums/router_enums.dart';
 import 'package:flutter_ecommerce_app/constants/extensions/app_padding_extension.dart';
+import 'package:flutter_ecommerce_app/controller/dialog_controller.dart';
 import 'package:flutter_ecommerce_app/theme/theme.dart';
 import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
 import 'package:flutter_ecommerce_app/widgets/textfield.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
-
+  LoginView({Key? key}) : super(key: key);
+  DialogController dialogController =
+      Get.put(DialogController());
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(),
       child: Scaffold(
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment:
-              MainAxisAlignment.end,
-          children: const [
-            _buildLoginHeader(),
-            _buildHeaderText(),
-            _buildFormContainer(),
-          ],
+        body: BlocConsumer<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state is LoginWaitingState) {
+            } else {
+              if (state is LoginSuccessState) {
+                GoRouter.of(context).go(
+                    RouterEnums.HOMEPAGE.value);
+              }
+            }
+          },
+          builder: (context, state) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment:
+                  MainAxisAlignment.end,
+              children: const [
+                _buildLoginHeader(),
+                _buildHeaderText(),
+                _buildFormContainer(),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -44,7 +60,7 @@ class _buildHeaderText extends StatelessWidget {
       padding:
           const AppPadding.custom(bottom: 20),
       child: Text(
-        'login_title'.tr(),
+        'login_title'.translate(),
         style: AppDefaultTheme()
             .themeData
             .textTheme
@@ -109,7 +125,7 @@ class _buildFormContainer
                 CrossAxisAlignment.start,
             children: [
               Text(
-                'welcome_text'.tr(),
+                'welcome_text'.translate(),
                 style: AppDefaultTheme()
                     .themeData
                     .textTheme
@@ -118,7 +134,8 @@ class _buildFormContainer
               Row(
                 children: [
                   Text(
-                    'dont_have_account_text'.tr(),
+                    'dont_have_account_text'
+                        .translate(),
                     style: AppDefaultTheme()
                         .themeData
                         .textTheme
@@ -132,7 +149,7 @@ class _buildFormContainer
                               .REGISTER.value);
                     },
                     child: Text(
-                      'sign_in'.tr(),
+                      'sign_in'.translate(),
                       style: AppDefaultTheme()
                           .themeData
                           .textTheme
@@ -152,7 +169,7 @@ class _buildFormContainer
               EmptyWidget()
                   .largeEmptyWidgetHeight,
               AppTextField(
-                label: 'e_mail'.tr(),
+                label: 'e_mail'.translate(),
                 icon: Icons.mail,
               ),
               EmptyWidget()
@@ -160,7 +177,7 @@ class _buildFormContainer
               AppTextField(
                   isSecure: true,
                   icon: Icons.visibility_off,
-                  label: 'password'.tr()),
+                  label: 'password'.translate()),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment:
@@ -182,7 +199,8 @@ class _buildFormContainer
                             .themeData
                             .scaffoldBackgroundColor,
                         title: Text(
-                            "remember_me".tr(),
+                            "remember_me"
+                                .translate(),
                             style:
                                 AppDefaultTheme()
                                     .themeData
@@ -201,7 +219,7 @@ class _buildFormContainer
                   ),
                   EmptyWidget().midEmptyWidget,
                   Text(
-                    'forgot_password'.tr(),
+                    'forgot_password'.translate(),
                     style: AppDefaultTheme()
                         .themeData
                         .textTheme
@@ -238,7 +256,7 @@ class _buildFormContainer
                     },
                     child: Center(
                       child: Text(
-                        'login_text'.tr(),
+                        'login_text'.translate(),
                         style: AppDefaultTheme()
                             .themeData
                             .textTheme
@@ -264,7 +282,7 @@ class _buildFormContainer
                             .themeData
                             .scaffoldBackgroundColor),
                   )),
-                  Text('or'.tr()),
+                  Text('or'.translate()),
                   Expanded(
                       child: Container(
                     margin:

@@ -21,7 +21,6 @@ class LoginBloc
 
     try {
       final login = await _authRepository.login();
-      print('aa');
       emit(LoginSuccessState());
     } catch (e) {
       emit(LoginErrorState(error: e.toString()));
