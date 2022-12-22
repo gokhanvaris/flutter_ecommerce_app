@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/theme/theme.dart';
+import 'package:get/get.dart';
+
+import '../controller/validator_controller.dart';
+import '../theme/theme.dart';
 
 class AppTextField extends StatelessWidget {
+  final validatorController =
+      Get.put(ValidatorController());
   AppTextField({
     Key? key,
     this.isSecure = false,
     required this.icon,
     required this.label,
+    this.controller,
   }) : super(key: key);
   bool isSecure;
   String label;
   IconData icon;
+  TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: ((val) => validatorController
+          .emptyValidator(val ?? '')),
+      controller: controller,
       obscureText: isSecure,
       decoration: InputDecoration(
         focusColor: AppDefaultTheme()

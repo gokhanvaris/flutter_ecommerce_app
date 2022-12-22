@@ -1,21 +1,32 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/bloc/auth/login/login_bloc.dart';
-import 'package:flutter_ecommerce_app/constants/assets/image_constant.dart';
-import 'package:flutter_ecommerce_app/constants/enums/router_enums.dart';
-import 'package:flutter_ecommerce_app/constants/extensions/app_padding_extension.dart';
-import 'package:flutter_ecommerce_app/controller/dialog_controller.dart';
-import 'package:flutter_ecommerce_app/theme/theme.dart';
-import 'package:flutter_ecommerce_app/widgets/empty_widget.dart';
-import 'package:flutter_ecommerce_app/widgets/textfield.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stylish_dialog/stylish_dialog.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({Key? key}) : super(key: key);
+import '../../bloc/auth/login/login_bloc.dart';
+import '../../constants/assets/image_constant.dart';
+import '../../constants/enums/router_enums.dart';
+import '../../constants/extensions/app_padding_extension.dart';
+import '../../models/login/user_model.dart';
+import '../../theme/theme.dart';
+import '../../utils/dialogs/dialog.dart';
+import '../../widgets/empty_widget.dart';
+import '../../widgets/textfield.dart';
+
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
+
+  @override
+  State<LoginView> createState() =>
+      _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
   DialogController dialogController =
       Get.put(DialogController());
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -24,10 +35,27 @@ class LoginView extends StatelessWidget {
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
             if (state is LoginWaitingState) {
+//show stylish dialog
+
+              AppInformationDialogs()
+                  .showDialog(context,
+                      StylishDialogType.PROGRESS)
+                  .show();
             } else {
+              AppInformationDialogs()
+                  .showDialog(context,
+                      StylishDialogType.PROGRESS)
+                  .dismiss();
+
               if (state is LoginSuccessState) {
                 GoRouter.of(context).go(
                     RouterEnums.HOMEPAGE.value);
+              } else if (state
+                  is LoginErrorState) {
+                AppInformationDialogs()
+                    .showDialog(context,
+                        StylishDialogType.ERROR)
+                    .show();
               }
             }
           },
@@ -36,9 +64,9 @@ class LoginView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment:
                   MainAxisAlignment.end,
-              children: const [
-                _buildLoginHeader(),
-                _buildHeaderText(),
+              children: [
+                const _buildLoginHeader(),
+                const _buildHeaderText(),
                 _buildFormContainer(),
               ],
             );
@@ -98,9 +126,13 @@ class _buildLoginHeader extends StatelessWidget {
 
 class _buildFormContainer
     extends StatelessWidget {
-  const _buildFormContainer({
+  _buildFormContainer({
     Key? key,
   }) : super(key: key);
+  final TextEditingController userMailController =
+      TextEditingController();
+  final TextEditingController userPassController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -171,13 +203,16 @@ class _buildFormContainer
               AppTextField(
                 label: 'e_mail'.translate(),
                 icon: Icons.mail,
+                controller: userMailController,
               ),
               EmptyWidget()
                   .largeEmptyWidgetHeight,
               AppTextField(
-                  isSecure: true,
-                  icon: Icons.visibility_off,
-                  label: 'password'.translate()),
+                isSecure: false,
+                icon: Icons.visibility_off,
+                label: 'password'.translate(),
+                controller: userPassController,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment:
@@ -251,8 +286,11 @@ class _buildFormContainer
 
                       context
                           .read<LoginBloc>()
-                          .add(
-                              const LoginEvent());
+                          .add(LoginEvent(User(
+                              userMailController
+                                  .text,
+                              userPassController
+                                  .text)));
                     },
                     child: Center(
                       child: Text(

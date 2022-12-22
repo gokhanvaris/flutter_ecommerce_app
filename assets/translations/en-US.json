@@ -10,5 +10,17 @@
     "login_text": "Login",
     "or": "OR",
     "remember_me": "Remember Me",
-    "have_an_account": "Have an account?"
+    "have_an_account": "Have an account?",
+    "empty_field_error": "This field cannot be empty.",
+    "info": {
+        "something_went_wrong": "Something went wrong",
+        "information_title": "Information",
+        "progress": "Progress...",
+        "success": "Success",
+        "warning": "Warning",
+        "successfully": "process completed successfully."
+    },
+    "error": {
+        "contact_provider": "please contact the provider or try again."
+    }
 }

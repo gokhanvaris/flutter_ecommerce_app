@@ -1,4 +1,6 @@
-import 'package:flutter_ecommerce_app/data/network/service/abstract_service.dart';
+import '../../../constants/enums/network_enums.dart';
+import '../../../models/login/user_model.dart';
+import 'abstract_service.dart';
 
 class AuthService extends AbstractService {
   final String path;
@@ -8,14 +10,15 @@ class AuthService extends AbstractService {
     this.tag = "login",
   }) : super(path, tag);
 
-  Future<dynamic> login() async {
+  Future<dynamic> login(User model) async {
     try {
       final response = await postCustom(
-          innerPath: 'login',
-          data: {
-            "username": "mor_2314",
-            "password": "83r5^_"
-          });
+        innerPath: NetworkEnums.LOGIN.value,
+        data: {
+          "username": model.email,
+          "password": model.password,
+        },
+      );
 
       return response;
     } catch (e) {

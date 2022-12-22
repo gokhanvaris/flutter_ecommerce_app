@@ -1,13 +1,16 @@
-import 'package:flutter_ecommerce_app/data/network/service/auth_service.dart';
-import 'package:flutter_ecommerce_app/data/network/service/http_manager.dart';
-import 'package:flutter_ecommerce_app/models/login/user_response_model.dart';
+import '../../../models/login/user_model.dart';
+import '../../../models/login/user_response_model.dart';
+import '../service/auth_service.dart';
+import '../service/http_manager.dart';
 
 class AuthRepository {
   final AuthService _authService = AuthService();
 
-  Future<UserResponseModel> login() async {
+  Future<UserResponseModel> login(
+      User model) async {
     try {
-      final response = await _authService.login();
+      final response =
+          await _authService.login(model);
 
       setToken(token: response.data['token']);
       return UserResponseModel.fromJson(
