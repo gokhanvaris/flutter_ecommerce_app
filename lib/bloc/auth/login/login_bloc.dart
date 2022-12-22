@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_ecommerce_app/data/network/repository/auth_repository.dart';
+
+import '../../../data/network/repository/auth_repository.dart';
+import '../../../models/login/user_model.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -20,7 +22,8 @@ class LoginBloc
     emit(LoginWaitingState());
 
     try {
-      final login = await _authRepository.login();
+      final login =
+          await _authRepository.login(event.user);
       emit(LoginSuccessState());
     } catch (e) {
       emit(LoginErrorState(error: e.toString()));

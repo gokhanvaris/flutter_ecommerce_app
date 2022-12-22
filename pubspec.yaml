@@ -31,6 +31,7 @@ dependencies:
 
   equatable: ^2.0.5
   cupertino_icons: ^1.0.2
+  stylish_dialog: ^1.0.1
 
 dev_dependencies:
   flutter_test:

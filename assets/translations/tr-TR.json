@@ -10,5 +10,17 @@
     "login_text": "Giriş Yap",
     "or": "YA DA",
     "remember_me": "Beni Hatırla",
-    "have_an_account": "Bir hesabın mı var?"
+    "have_an_account": "Bir hesabın mı var?",
+    "empty_field_error": "Bu alan boş geçilemez.",
+    "info": {
+        "something_went_wrong": "Bir şeyler yanlış gitti.",
+        "information_title": "Bilgi",
+        "progress": "İşleniyor...",
+        "success": "Başarılı",
+        "warning": "Uyarı",
+        "successfully": "İşlem başarıyla tamamlandı."
+    },
+    "error": {
+        "contact_provider": "Sağlayıcınız ile iletişime geçin yada tekrar deneyin."
+    }
 }
