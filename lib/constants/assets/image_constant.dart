@@ -7,4 +7,6 @@ class ImageConstant {
       'assets/icons/apple.png';
   static String loginLogo =
       'assets/images/logo_login.png';
+  static String loginHomepage =
+      'assets/images/logo_home.png';
 }

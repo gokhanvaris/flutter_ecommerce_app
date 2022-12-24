@@ -18,7 +18,8 @@
         "progress": "İşleniyor...",
         "success": "Başarılı",
         "warning": "Uyarı",
-        "successfully": "İşlem başarıyla tamamlandı."
+        "successfully": "İşlem başarıyla tamamlandı.",
+        "search_text": "Ara..."
     },
     "error": {
         "contact_provider": "Sağlayıcınız ile iletişime geçin yada tekrar deneyin."

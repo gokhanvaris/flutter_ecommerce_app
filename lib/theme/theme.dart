@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppDefaultTheme {
+  static const whiteBackground = Colors.white;
+  static const greyBackGround = Colors.grey;
   ThemeData themeData = ThemeData(
       appBarTheme: const AppBarTheme(
         color: Color.fromRGBO(249, 249, 249, 1),
