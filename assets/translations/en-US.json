@@ -18,7 +18,8 @@
         "progress": "Progress...",
         "success": "Success",
         "warning": "Warning",
-        "successfully": "process completed successfully."
+        "successfully": "process completed successfully.",
+        "search_text": "Search..."
     },
     "error": {
         "contact_provider": "please contact the provider or try again."

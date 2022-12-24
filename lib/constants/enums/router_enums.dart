@@ -1,7 +1,7 @@
 enum RouterEnums {
-  LOGIN('/'),
+  LOGIN('/home'),
   REGISTER('/register'),
-  HOMEPAGE('/home');
+  HOMEPAGE('/');
 
   const RouterEnums(this.value);
   final String value;

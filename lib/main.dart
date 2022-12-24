@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/app_router.dart';
-import 'package:flutter_ecommerce_app/bloc/bloc_providers.dart';
-import 'package:flutter_ecommerce_app/theme/theme.dart';
 import 'package:get/get.dart';
+
+import 'app_router.dart';
+import 'bloc/bloc_providers.dart';
+import 'theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       routerConfig: AppRouter().router,
-      title: 'Flutter Demo',
+      title: 'Flutter E-commerce App',
       debugShowCheckedModeBanner: false,
       theme: AppDefaultTheme().themeData,
     );
